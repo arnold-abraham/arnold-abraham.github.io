@@ -29,6 +29,32 @@ header {
   border: 4px solid white;
 }
 
+.location-line {
+  margin-top: 4px;
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.location-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 50% 50% 0;
+  background: white;
+  transform: rotate(-45deg);
+  margin-right: 6px;
+}
+
+.location-icon::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: #0a66c2;
+  border-radius: 50%;
+  margin: 3px auto 0;
+}
+
 .links {
   margin-top: 12px;
 }
@@ -156,25 +182,55 @@ h2 {
   margin-right: 6px;
 }
 
-@media (max-width: 600px) {
-  .skill-row {
-    flex-direction: column;
-  }
-
-  .skill-label {
-    flex: none;
-  }
+.contact-card {
+  background: white;
+  padding: 20px 24px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
 }
 
-@media (min-width: 768px) {
-  .skills-columns {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .skills-column {
-    flex: 1;
-  }
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #e1ecf4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #0a66c2;
+}
+
+.contact-icon-email::before {
+  content: "✉";
+}
+
+.contact-icon-phone::before {
+  content: "☎";
+}
+
+.contact-icon-linkedin::before {
+  content: "in";
+  font-weight: bold;
+}
+
+#contact a {
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
 }
 
 footer {
