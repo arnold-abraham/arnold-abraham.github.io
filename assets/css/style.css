@@ -61,9 +61,22 @@ h2 {
   object-fit: contain;
 }
 
+.meta-row {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.95em;
+}
+
 .role {
   font-weight: bold;
   color: #555;
+}
+
+.dates,
+.location {
+  color: #666;
 }
 
 .skills-grid {
