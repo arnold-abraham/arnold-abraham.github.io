@@ -1,0 +1,41 @@
+name: Update pinned projects JSON
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1' # every Monday 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate assets/data/projects.json
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: arnold-abraham
+          OUTFILE: assets/data/projects.json
+        run: |
+          set -euo pipefail
+          python3 scripts/update_projects.py
+
+      - name: Commit & push if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add assets/data/projects.json
+          git commit -m "chore: update pinned projects JSON"
+          git push

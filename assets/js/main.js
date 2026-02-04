@@ -2,6 +2,7 @@
  * - Highlights active section in nav as you scroll
  * - Adds scroll progress indicator
  * - Adds keyboard-friendly behavior for in-page links
+ * - Loads Projects from a static JSON file in this repo
  */
 
 (function () {
@@ -46,7 +47,6 @@
   if ('IntersectionObserver' in window && sections.length) {
     const obs = new IntersectionObserver(
       (entries) => {
-        // Pick the most visible entry
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
@@ -71,8 +71,6 @@
       const target = href ? document.querySelector(href) : null;
       if (!target) return;
 
-      // Let browser scroll (CSS handles smooth scroll), then focus the section for accessibility.
-      // Make the section programmatically focusable only when needed.
       window.setTimeout(() => {
         const prevTabIndex = target.getAttribute('tabindex');
         target.setAttribute('tabindex', '-1');
@@ -97,4 +95,105 @@
 
   updateNavScrolled();
   window.addEventListener('scroll', updateNavScrolled, { passive: true });
+
+  /* ------------------------------
+   * Projects (Stable)
+   * ------------------------------ */
+
+  const PROJECTS_JSON_URL = 'assets/data/projects.json';
+  const MAX_PROJECTS = 4;
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+  }
+
+  function formatCompactNumber(n) {
+    const num = Number(n) || 0;
+    if (num < 1000) return String(num);
+    const units = ['k', 'm', 'b'];
+    let value = num;
+    let idx = -1;
+    while (value >= 1000 && idx < units.length - 1) {
+      value /= 1000;
+      idx++;
+    }
+    const rounded = value >= 10 ? Math.round(value) : Math.round(value * 10) / 10;
+    return `${rounded}${units[idx]}`;
+  }
+
+  function languageColor(lang) {
+    // Small tasteful palette (monochrome-ish). Not trying to mirror GitHub exactly.
+    const map = {
+      Java: '#f59e0b',
+      Python: '#60a5fa',
+      JavaScript: '#fbbf24',
+      TypeScript: '#38bdf8',
+      HTML: '#fb7185',
+      CSS: '#a78bfa',
+      Shell: '#94a3b8',
+      'Jupyter Notebook': '#f97316',
+    };
+    return map[lang] || 'rgba(96,165,250,.9)';
+  }
+
+  function renderProjectCard(repo) {
+    const name = escapeHtml(repo.name);
+    const url = repo.url;
+    const desc = repo.description ? escapeHtml(repo.description) : 'No description provided.';
+    const lang = repo.language ? escapeHtml(repo.language) : null;
+    const stars = repo.stars ?? 0;
+    const forks = repo.forks ?? 0;
+
+    const langPill = lang
+      ? `<span class="pill"><span class="dot" style="background:${languageColor(repo.language)}"></span>${lang}</span>`
+      : '';
+
+    const starPill = `<span class="pill">★ ${formatCompactNumber(stars)}</span>`;
+    const forkPill = `<span class="pill">⑂ ${formatCompactNumber(forks)}</span>`;
+
+    return `
+      <a class="project-card" href="${url}" target="_blank" rel="noreferrer noopener">
+        <div class="project-title">
+          <span>${name}</span>
+          <span style="opacity:.75">↗</span>
+        </div>
+        <p class="project-desc">${desc}</p>
+        <div class="project-meta">
+          ${langPill}
+          ${starPill}
+          ${forkPill}
+        </div>
+      </a>
+    `;
+  }
+
+  async function loadProjects() {
+    const container = document.getElementById('pinned-projects');
+    if (!container) return;
+
+    try {
+      const res = await fetch(PROJECTS_JSON_URL, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
+
+      const data = await res.json();
+      const projects = Array.isArray(data.projects) ? data.projects : [];
+
+      const slice = projects.slice(0, MAX_PROJECTS);
+      if (!slice.length) {
+        container.innerHTML = '<div class="project-skeleton">Projects aren\'t generated yet. Run the “Update pinned projects JSON” GitHub Action once, then refresh.</div>';
+        return;
+      }
+
+      container.innerHTML = slice.map(renderProjectCard).join('');
+    } catch (err) {
+      container.innerHTML = '<div class="project-skeleton">Projects couldn\'t be loaded right now. Please refresh, or view my GitHub profile.</div>';
+    }
+  }
+
+  loadProjects();
 })();

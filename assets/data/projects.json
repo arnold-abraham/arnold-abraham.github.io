@@ -1,0 +1,38 @@
+{
+  "generatedAt": null,
+  "username": "arnold-abraham",
+  "projects": [
+    {
+      "name": "Project-1",
+      "description": "Pinned project will appear here after the GitHub Action runs.",
+      "url": "https://github.com/arnold-abraham",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "Project-2",
+      "description": "Pinned project will appear here after the GitHub Action runs.",
+      "url": "https://github.com/arnold-abraham",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "Project-3",
+      "description": "Pinned project will appear here after the GitHub Action runs.",
+      "url": "https://github.com/arnold-abraham",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "Project-4",
+      "description": "Pinned project will appear here after the GitHub Action runs.",
+      "url": "https://github.com/arnold-abraham",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    }
+  ]
+}
