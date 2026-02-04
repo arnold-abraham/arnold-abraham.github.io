@@ -1,5 +1,38 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-02-04T23:07:04Z",
   "username": "arnold-abraham",
-  "projects": []
+  "projects": [
+    {
+      "name": "food-delivery-microservices",
+      "description": "Food delivery microservices application (Java 17, Spring Boot, Eureka, Spring Cloud Gateway, Postgres)",
+      "url": "https://github.com/arnold-abraham/food-delivery-microservices",
+      "stars": 0,
+      "forks": 0,
+      "language": "Java"
+    },
+    {
+      "name": "flight-booking-app",
+      "description": "Flight Booking App (Spring Boot + React)",
+      "url": "https://github.com/arnold-abraham/flight-booking-app",
+      "stars": 0,
+      "forks": 0,
+      "language": "Java"
+    },
+    {
+      "name": "panel-360",
+      "description": "Convolutional autoencoder with LSTM Seq2Seq for image reconstruction and temporal forecasting for panel images",
+      "url": "https://github.com/arnold-abraham/panel-360",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python"
+    },
+    {
+      "name": "player-communication",
+      "description": "Pure Java two-player messaging (in-process and TCP)",
+      "url": "https://github.com/arnold-abraham/player-communication",
+      "stars": 0,
+      "forks": 0,
+      "language": "Java"
+    }
+  ]
 }
