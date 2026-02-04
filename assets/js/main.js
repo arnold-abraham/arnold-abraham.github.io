@@ -2,7 +2,7 @@
  * - Highlights active section in nav as you scroll
  * - Adds scroll progress indicator
  * - Adds keyboard-friendly behavior for in-page links
- * - Loads Projects from a static JSON file in this repo
+ * - Loads Projects (pinned repositories)
  */
 
 (function () {
@@ -97,11 +97,12 @@
   window.addEventListener('scroll', updateNavScrolled, { passive: true });
 
   /* ------------------------------
-   * Projects (Stable)
+   * Projects (Pinned)
    * ------------------------------ */
 
-  const PROJECTS_JSON_URL = '/assets/data/projects.json';
+  const GITHUB_USER = 'arnold-abraham';
   const MAX_PROJECTS = 4;
+  const PROJECTS_JSON_URL = '/assets/data/projects.json';
 
   function escapeHtml(str) {
     return String(str)
@@ -127,7 +128,6 @@
   }
 
   function languageColor(lang) {
-    // Small tasteful palette (monochrome-ish). Not trying to mirror GitHub exactly.
     const map = {
       Java: '#f59e0b',
       Python: '#60a5fa',
@@ -172,26 +172,90 @@
     `;
   }
 
+  function renderProjects(container, projects) {
+    const slice = (projects || []).slice(0, MAX_PROJECTS);
+    if (!slice.length) {
+      container.innerHTML = '<div class="project-skeleton">Projects couldn\'t be loaded right now. Please view my GitHub profile.</div>';
+      return;
+    }
+    container.innerHTML = slice.map(renderProjectCard).join('');
+  }
+
+  async function fetchProjectsFromLocalJson() {
+    const url = `${PROJECTS_JSON_URL}?v=${Date.now()}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
+    const data = await res.json();
+    const projects = Array.isArray(data?.projects) ? data.projects : [];
+    return projects;
+  }
+
+  async function fetchPinnedFromProfileHtml(username) {
+    const res = await fetch(`https://github.com/${encodeURIComponent(username)}`, {
+      headers: { 'Accept': 'text/html' },
+    });
+    if (!res.ok) throw new Error(`GitHub profile fetch failed: ${res.status}`);
+
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    const pinnedItems = Array.from(doc.querySelectorAll('div.pinned-item-list-item'));
+    if (!pinnedItems.length) throw new Error('No pinned items found');
+
+    const repos = pinnedItems
+      .map((item) => {
+        const link = item.querySelector('a[href*="/"]');
+        const href = link ? link.getAttribute('href') : null;
+        if (!href) return null;
+
+        const parts = href.split('/').filter(Boolean);
+        if (parts.length < 2) return null;
+        const name = parts[1];
+
+        const descEl = item.querySelector('p.pinned-item-desc');
+        const description = descEl ? descEl.textContent.trim() : '';
+
+        const langEl = item.querySelector('[itemprop="programmingLanguage"]');
+        const language = langEl ? langEl.textContent.trim() : null;
+
+        const starsEl = item.querySelector('a[href$="/stargazers"]');
+        const forksEl = item.querySelector('a[href$="/forks"]');
+        const stars = starsEl ? Number((starsEl.textContent || '').trim().replaceAll(',', '')) : 0;
+        const forks = forksEl ? Number((forksEl.textContent || '').trim().replaceAll(',', '')) : 0;
+
+        return {
+          name,
+          description,
+          language,
+          stars: Number.isFinite(stars) ? stars : 0,
+          forks: Number.isFinite(forks) ? forks : 0,
+          url: `https://github.com/${username}/${name}`,
+        };
+      })
+      .filter(Boolean);
+
+    return repos;
+  }
+
   async function loadProjects() {
     const container = document.getElementById('pinned-projects');
     if (!container) return;
 
     try {
-      // 1) Fetch without cache, 2) add cache-busting query param.
-      const url = `${PROJECTS_JSON_URL}?v=${Date.now()}`;
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
-
-      const data = await res.json();
-      const projects = Array.isArray(data?.projects) ? data.projects : [];
-
-      const slice = projects.slice(0, MAX_PROJECTS);
-      if (!slice.length) {
-        container.innerHTML = '<div class="project-skeleton">Projects aren\'t available yet. Please refresh, or view my GitHub profile.</div>';
+      const local = await fetchProjectsFromLocalJson();
+      // If local JSON has real data, use it.
+      if (local && local.length) {
+        renderProjects(container, local);
         return;
       }
+    } catch {
+      // ignore; fallback below
+    }
 
-      container.innerHTML = slice.map(renderProjectCard).join('');
+    // Fallback: pinned only (no "all repos" fallbacks)
+    try {
+      const pinned = await fetchPinnedFromProfileHtml(GITHUB_USER);
+      renderProjects(container, pinned);
     } catch (err) {
       container.innerHTML = '<div class="project-skeleton">Projects couldn\'t be loaded right now. Please refresh, or view my GitHub profile.</div>';
     }
