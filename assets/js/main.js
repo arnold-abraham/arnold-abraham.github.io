@@ -100,7 +100,7 @@
    * Projects (Stable)
    * ------------------------------ */
 
-  const PROJECTS_JSON_URL = 'assets/data/projects.json';
+  const PROJECTS_JSON_URL = '/assets/data/projects.json';
   const MAX_PROJECTS = 4;
 
   function escapeHtml(str) {
@@ -177,15 +177,17 @@
     if (!container) return;
 
     try {
-      const res = await fetch(PROJECTS_JSON_URL, { cache: 'no-cache' });
+      // 1) Fetch without cache, 2) add cache-busting query param.
+      const url = `${PROJECTS_JSON_URL}?v=${Date.now()}`;
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
 
       const data = await res.json();
-      const projects = Array.isArray(data.projects) ? data.projects : [];
+      const projects = Array.isArray(data?.projects) ? data.projects : [];
 
       const slice = projects.slice(0, MAX_PROJECTS);
       if (!slice.length) {
-        container.innerHTML = '<div class="project-skeleton">Projects aren\'t generated yet. Run the “Update pinned projects JSON” GitHub Action once, then refresh.</div>';
+        container.innerHTML = '<div class="project-skeleton">Projects aren\'t available yet. Please refresh, or view my GitHub profile.</div>';
         return;
       }
 
