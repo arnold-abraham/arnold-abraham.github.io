@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<noscript>
+  <div class="noscript">This site works without JavaScript, but enabling it adds small UX improvements (active section highlighting &amp; scroll progress).</div>
+</noscript>
+
 <header>
   <div class="header-content">
     <nav class="top-nav">
@@ -20,13 +24,15 @@
         <a href="#contact">Contact</a>
       </div>
     </nav>
+
     <img src="assets/img/profile.jpg" alt="Arnold Abraham" class="profile-pic"/>
     <h1>Arnold Abraham</h1>
     <p>Software Engineer · Backend · Data Science</p>
-    <p class="location-line"><span class="location-icon"></span>Erlangen, Germany</p>
+    <p class="location-line"><span class="location-icon" aria-hidden="true"></span><span>Erlangen, Germany</span></p>
+
     <div class="links">
-      <a href="https://github.com/arnold-abraham">GitHub</a>
-      <a href="https://linkedin.com/in/arnoldabraham">LinkedIn</a>
+      <a href="https://github.com/arnold-abraham" target="_blank" rel="noreferrer noopener">GitHub</a>
+      <a href="https://linkedin.com/in/arnoldabraham" target="_blank" rel="noreferrer noopener">LinkedIn</a>
       <a href="assets/resume/Resume_Arnold_Abraham.pdf" download>Download CV</a>
     </div>
   </div>
@@ -35,55 +41,53 @@
 <section id="about">
   <h2>About Me</h2>
   <p>
-    Software Engineer with experience in backend systems, data-driven applications, and machine learning. 
+    Software Engineer with experience in backend systems, data-driven applications, and machine learning.
     Focused on building scalable, reliable enterprise software with an emphasis on performance, maintainability, and real-world impact.
   </p>
 </section>
 
 <section id="experience">
-    <h2>Experience</h2>
+  <h2>Experience</h2>
 
-    <div class="card experience-card">
-        <img src="assets/img/siemens.png" alt="Siemens Logo" class="company-logo"/>
-        <div>
-            <h3>Siemens Logistics</h3>
-            <div class="meta-row">
-                <span class="role">Software Engineer – Working Student</span>
-                <span class="dates">Jul 2023 – Jun 2025</span>
-                <span class="location">Nuremberg, Germany</span>
-            </div>
-            <ul>
-                <li>Led the end-to-end migration of two Java applications from Oracle to PostgreSQL, ensuring database compatibility, data integrity, and application stability while reducing database licensing costs.</li>
-                <li>Developed backend features and optimized database interfaces to enhance performance and maintainability.</li>
-                <li>Designed and implemented automated installation workflows for JRE, PostgreSQL, and environment configuration, reducing setup effort by 70%.</li>
-                <li>Built a Python data pipeline for predictive maintenance, integrating ML models with real-time industrial monitoring.</li>
-                <li>Implemented an asyncio-based Python data acquisition system for concurrent real-time monitoring of industrial drives.</li>
-                <li>Collaborated with cross-functional engineering teams to integrate predictive monitoring into production workflows.</li>
-            </ul>
-        </div>
+  <div class="card experience-card">
+    <img src="assets/img/siemens.png" alt="Siemens Logo" class="company-logo"/>
+    <div>
+      <h3>Siemens Logistics</h3>
+      <div class="meta-row">
+        <span class="role">Software Engineer – Working Student</span>
+        <span class="dates">Jul 2023 – Jun 2025</span>
+        <span class="location">Nuremberg, Germany</span>
+      </div>
+      <ul>
+        <li>Led the end-to-end migration of two Java applications from Oracle to PostgreSQL, ensuring database compatibility, data integrity, and application stability while reducing database licensing costs.</li>
+        <li>Developed backend features and optimized database interfaces to enhance performance and maintainability.</li>
+        <li>Designed and implemented automated installation workflows for JRE, PostgreSQL, and environment configuration, reducing setup effort by 70%.</li>
+        <li>Built a Python data pipeline for predictive maintenance, integrating ML models with real-time industrial monitoring.</li>
+        <li>Implemented an asyncio-based Python data acquisition system for concurrent real-time monitoring of industrial drives.</li>
+        <li>Collaborated with cross-functional engineering teams to integrate predictive monitoring into production workflows.</li>
+      </ul>
     </div>
+  </div>
 
-    <div class="card experience-card">
-        <img src="assets/img/ibs.png" alt="IBS Software Logo" class="company-logo"/>
-        <div>
-            <h3>IBS Software</h3>
-            <div class="meta-row">
-                <span class="role">Product Engineer</span>
-                <span class="dates">Sept 2021 – Sept 2022</span>
-                <span class="location">Kochi, India</span>
-            </div>
-            <ul>
-                <li>Developed Java/Spring-based backend components for an airline crew scheduling platform used by LATAM and Qantas.</li>
-                <li>Implemented and maintained complex scheduling and compliance business logic, including bug fixes and enhancements driven by production and QA feedback.</li>
-                <li>Created, maintained, and troubleshot SQL scripts supporting backend functionality and ensuring correct system behavior.</li>
-                <li>Contributed across the full software development lifecycle, including design, testing (JUnit), code reviews, and production issue resolution.</li>
-                <li>Collaborated with PM, QA, and UI teams to deliver high-quality releases on schedule.</li>
-            </ul>
-        </div>
+  <div class="card experience-card">
+    <img src="assets/img/ibs.png" alt="IBS Software Logo" class="company-logo"/>
+    <div>
+      <h3>IBS Software</h3>
+      <div class="meta-row">
+        <span class="role">Product Engineer</span>
+        <span class="dates">Sept 2021 – Sept 2022</span>
+        <span class="location">Kochi, India</span>
+      </div>
+      <ul>
+        <li>Developed Java/Spring-based backend components for an airline crew scheduling platform used by LATAM and Qantas.</li>
+        <li>Implemented and maintained complex scheduling and compliance business logic, including bug fixes and enhancements driven by production and QA feedback.</li>
+        <li>Created, maintained, and troubleshot SQL scripts supporting backend functionality and ensuring correct system behavior.</li>
+        <li>Contributed across the full software development lifecycle, including design, testing (JUnit), code reviews, and production issue resolution.</li>
+        <li>Collaborated with PM, QA, and UI teams to deliver high-quality releases on schedule.</li>
+      </ul>
     </div>
-
+  </div>
 </section>
-
 
 <section id="education">
   <h2>Education</h2>
@@ -93,7 +97,7 @@
     <div>
       <h3>FAU Erlangen–Nuremberg</h3>
       <p><strong>Degree:</strong> Master of Science in Data Science · 2022 – 2025 · Erlangen, Germany</p>
-      <p>Specialization: Machine Learning & Artificial Intelligence</p>
+      <p>Specialization: Machine Learning &amp; Artificial Intelligence</p>
     </div>
   </div>
 
@@ -101,34 +105,39 @@
     <img src="assets/img/ktu.png" alt="KTU Logo" class="company-logo"/>
     <div>
       <h3>APJ Abdul Kalam Technological University</h3>
-      <p><strong>Degree:</strong> Bachelor of Technology in Computer Science & Engineering · 2017 – 2021 · Kochi, India</p>
+      <p><strong>Degree:</strong> Bachelor of Technology in Computer Science &amp; Engineering · 2017 – 2021 · Kochi, India</p>
       <p><strong>Relevant Courses:</strong> Data Structures, Algorithm Design</p>
     </div>
   </div>
-
 </section>
 
 <section id="skills">
   <h2>Technical Skills</h2>
+
   <div class="skills-section">
     <div class="skills-columns">
       <div class="skills-column">
         <div class="skill-row">
-          <span class="skill-label">&lt;/&gt; Languages:</span>
+          <span class="skill-ico" aria-hidden="true">&lt;/&gt;</span>
+          <span class="skill-label">Languages</span>
           <span class="skill-list">Java, Python, SQL, JavaScript, VBA</span>
         </div>
         <div class="skill-row">
-          <span class="skill-label">⚙️ Frameworks:</span>
+          <span class="skill-ico" aria-hidden="true">⚙</span>
+          <span class="skill-label">Frameworks</span>
           <span class="skill-list">Spring Boot, Spring, Hibernate (JPA), React, JUnit</span>
         </div>
       </div>
+
       <div class="skills-column">
         <div class="skill-row">
-          <span class="skill-label">☁️ Tools &amp; Platforms:</span>
+          <span class="skill-ico" aria-hidden="true">☁</span>
+          <span class="skill-label">Tools &amp; Platforms</span>
           <span class="skill-list">Git, GitLab, Bitbucket, Docker, AWS, CI/CD, JIRA, Confluence</span>
         </div>
         <div class="skill-row">
-          <span class="skill-label">🗄️ Databases:</span>
+          <span class="skill-ico" aria-hidden="true">⛁</span>
+          <span class="skill-label">Databases</span>
           <span class="skill-list">PostgreSQL, Oracle, InfluxDB</span>
         </div>
       </div>
@@ -140,15 +149,15 @@
   <h2>Contact</h2>
   <div class="contact-card">
     <div class="contact-item">
-      <span class="contact-icon contact-icon-email"></span>
+      <span class="contact-icon contact-icon-email" aria-hidden="true"></span>
       <a href="mailto:iarnoldabraham@gmail.com">iarnoldabraham@gmail.com</a>
     </div>
     <div class="contact-item">
-      <span class="contact-icon contact-icon-phone"></span>
+      <span class="contact-icon contact-icon-phone" aria-hidden="true"></span>
       <a href="tel:+4915510451293">+49 155 10451293</a>
     </div>
     <div class="contact-item">
-      <span class="contact-icon contact-icon-linkedin"></span>
+      <span class="contact-icon contact-icon-linkedin" aria-hidden="true"></span>
       <a href="https://linkedin.com/in/arnoldabraham">linkedin.com/in/arnoldabraham</a>
     </div>
   </div>
@@ -158,5 +167,6 @@
   <p>© Arnold Abraham</p>
 </footer>
 
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
