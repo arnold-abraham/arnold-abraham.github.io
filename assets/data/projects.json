@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-02-23T06:57:48Z",
+  "generatedAt": "2026-03-02T06:50:14Z",
   "username": "arnold-abraham",
   "projects": [
     {
       "name": "food-delivery-microservices",
-      "description": "Food delivery microservices application (Java 17, Spring Boot, Eureka, Spring Cloud Gateway, Postgres)",
+      "description": "Food delivery microservices application (Java 17, Spring Boot, Eureka, Spring Cloud Gateway, Kafka, Postgres)",
       "url": "https://github.com/arnold-abraham/food-delivery-microservices",
       "stars": 0,
       "forks": 0,
