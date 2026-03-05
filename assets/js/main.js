@@ -3,6 +3,7 @@
  * - Adds scroll progress indicator
  * - Adds keyboard-friendly behavior for in-page links
  * - Loads Projects (pinned repositories)
+ * - Adds subtle reveal-on-scroll animations
  */
 
 (function () {
@@ -22,6 +23,43 @@
   const progressBar = progress.querySelector('.scroll-progress__bar');
 
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ------------------------------
+   * Reveal-on-scroll animations
+   * ------------------------------ */
+  function setupRevealAnimations() {
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    const staggerGroups = Array.from(document.querySelectorAll('.reveal-stagger'));
+
+    if (prefersReducedMotion) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+      staggerGroups.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    // If IntersectionObserver isn't supported, just show everything.
+    if (!('IntersectionObserver' in window)) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+      staggerGroups.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
+
+    [...revealEls, ...staggerGroups].forEach((el) => obs.observe(el));
+  }
 
   function setProgress() {
     const doc = document.documentElement;
@@ -96,6 +134,9 @@
   updateNavScrolled();
   window.addEventListener('scroll', updateNavScrolled, { passive: true });
 
+  // Init reveal animations after initial layout
+  window.requestAnimationFrame(setupRevealAnimations);
+
   /* ------------------------------
    * Projects (Pinned)
    * ------------------------------ */
@@ -157,7 +198,7 @@
     const forkPill = `<span class="pill">⑂ ${formatCompactNumber(forks)}</span>`;
 
     return `
-      <a class="project-card" href="${url}" target="_blank" rel="noreferrer noopener">
+      <a class="project-card reveal" href="${url}" target="_blank" rel="noreferrer noopener">
         <div class="project-title">
           <span>${name}</span>
           <span style="opacity:.75">↗</span>
@@ -179,6 +220,9 @@
       return;
     }
     container.innerHTML = slice.map(renderProjectCard).join('');
+
+    // After inserting cards, ensure reveal observer picks them up.
+    setupRevealAnimations();
   }
 
   async function fetchProjectsFromLocalJson() {
@@ -256,7 +300,7 @@
     try {
       const pinned = await fetchPinnedFromProfileHtml(GITHUB_USER);
       renderProjects(container, pinned);
-    } catch (err) {
+    } catch {
       container.innerHTML = '<div class="project-skeleton">Projects couldn\'t be loaded right now. Please refresh, or view my GitHub profile.</div>';
     }
   }
