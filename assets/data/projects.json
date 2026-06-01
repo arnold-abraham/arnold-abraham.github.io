@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-25T09:54:45Z",
+  "generatedAt": "2026-06-01T11:19:52Z",
   "username": "arnold-abraham",
   "projects": [
     {
       "name": "food-delivery-microservices",
-      "description": "Food delivery microservices application (Java 17, Spring Boot, Spring Cloud Gateway, Kafka, Postgres)",
+      "description": "Food delivery microservices using Java 17 + Spring Boot, Spring Cloud Gateway, PostgreSQL, Kafka, Docker Compose, Kubernetes, and AWS EKS provisioning with Terraform.",
       "url": "https://github.com/arnold-abraham/food-delivery-microservices",
       "stars": 1,
       "forks": 0,
@@ -44,7 +44,7 @@
     },
     {
       "name": "serverless-pipeline-demo",
-      "description": null,
+      "description": "Terraform-provisioned serverless pipeline with Python AWS Lambda",
       "url": "https://github.com/arnold-abraham/serverless-pipeline-demo",
       "stars": 0,
       "forks": 0,
