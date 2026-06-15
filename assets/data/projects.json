@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-08T10:24:41Z",
+  "generatedAt": "2026-06-15T11:52:00Z",
   "username": "arnold-abraham",
   "projects": [
     {
@@ -36,7 +36,7 @@
     },
     {
       "name": "engineering_knowledge_copilot",
-      "description": "A simple RAG-based engineering assistant",
+      "description": "A RAG-based engineering assistant",
       "url": "https://github.com/arnold-abraham/engineering_knowledge_copilot",
       "stars": 0,
       "forks": 0,
