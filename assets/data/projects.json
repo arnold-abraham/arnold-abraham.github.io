@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T11:52:00Z",
+  "generatedAt": "2026-06-22T11:41:32Z",
   "username": "arnold-abraham",
   "projects": [
     {
@@ -27,14 +27,6 @@
       "language": "Python"
     },
     {
-      "name": "player-communication",
-      "description": "Pure Java two-player messaging (in-process and TCP)",
-      "url": "https://github.com/arnold-abraham/player-communication",
-      "stars": 0,
-      "forks": 0,
-      "language": "Java"
-    },
-    {
       "name": "engineering_knowledge_copilot",
       "description": "A RAG-based engineering assistant",
       "url": "https://github.com/arnold-abraham/engineering_knowledge_copilot",
@@ -49,6 +41,14 @@
       "stars": 0,
       "forks": 0,
       "language": "HCL"
+    },
+    {
+      "name": "shopping_agent",
+      "description": " AI shopping assistant that lets you search products, check ratings, and place orders through a natural language chat interface.",
+      "url": "https://github.com/arnold-abraham/shopping_agent",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python"
     }
   ]
 }
