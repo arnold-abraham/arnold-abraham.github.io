@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T09:30:59Z",
+  "generatedAt": "2026-08-10T07:18:08Z",
   "username": "arnold-abraham",
   "projects": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "name": "panel-360",
-      "description": "Convolutional autoencoder with LSTM Seq2Seq for image reconstruction and temporal forecasting for panel images",
+      "description": "Predictive maintenance for electrical cabinets: forecasts thermal images with a CNN autoencoder + LSTM Seq2Seq and flags anomalies via Isolation Forest.",
       "url": "https://github.com/arnold-abraham/panel-360",
       "stars": 0,
       "forks": 0,
@@ -35,20 +35,20 @@
       "language": "Python"
     },
     {
-      "name": "serverless-pipeline-demo",
-      "description": "Terraform-provisioned serverless pipeline with Python AWS Lambda",
-      "url": "https://github.com/arnold-abraham/serverless-pipeline-demo",
-      "stars": 0,
-      "forks": 0,
-      "language": "HCL"
-    },
-    {
       "name": "shopping_agent",
       "description": " AI shopping assistant that lets you search products, check ratings, and place orders through a natural language chat interface.",
       "url": "https://github.com/arnold-abraham/shopping_agent",
       "stars": 0,
       "forks": 0,
       "language": "Python"
+    },
+    {
+      "name": "serverless-pipeline-demo",
+      "description": "Terraform-provisioned serverless pipeline with Python AWS Lambda",
+      "url": "https://github.com/arnold-abraham/serverless-pipeline-demo",
+      "stars": 0,
+      "forks": 0,
+      "language": "HCL"
     }
   ]
 }
