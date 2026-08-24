@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T06:39:50Z",
+  "generatedAt": "2026-08-24T06:42:04Z",
   "username": "arnold-abraham",
   "projects": [
     {
@@ -7,14 +7,6 @@
       "description": "Food delivery microservices using Java 17 + Spring Boot, Spring Cloud Gateway, PostgreSQL, Kafka, Docker Compose, Kubernetes, and AWS EKS provisioning with Terraform.",
       "url": "https://github.com/arnold-abraham/food-delivery-microservices",
       "stars": 1,
-      "forks": 0,
-      "language": "Java"
-    },
-    {
-      "name": "flight-booking-app",
-      "description": "Flight Booking App (Spring Boot + React)",
-      "url": "https://github.com/arnold-abraham/flight-booking-app",
-      "stars": 0,
       "forks": 0,
       "language": "Java"
     },
@@ -49,6 +41,14 @@
       "stars": 0,
       "forks": 0,
       "language": "HCL"
+    },
+    {
+      "name": "event-booking-api",
+      "description": "FastAPI + SQLAlchemy event booking API",
+      "url": "https://github.com/arnold-abraham/event-booking-api",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python"
     }
   ]
 }
