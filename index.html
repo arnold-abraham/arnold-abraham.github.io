@@ -2,196 +2,377 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Arnold Abraham | Software Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Arnold Abraham — Software Engineer (Backend • Data Science) based in Erlangen, Germany. Experience in Java/Spring, Python, and PostgreSQL/Oracle." />
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <meta name="description" content="Arnold Abraham — Software Engineer (Backend · Data & AI) based in Erlangen, Germany. Java, Spring Boot, Python, PostgreSQL, AWS, Kubernetes and LLM applications." />
+  <meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)" />
+  <meta property="og:title" content="Arnold Abraham | Software Engineer" />
+  <meta property="og:description" content="Backend · Data & AI — Java, Spring Boot, Python, AWS." />
+  <meta property="og:image" content="https://www.arnoldabraham.com/assets/img/profile.jpg" />
+  <meta property="og:url" content="https://www.arnoldabraham.com/" />
+  <link rel="icon" href="assets/img/profile.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    /* Apply saved theme before paint to avoid a flash */
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    })();
+  </script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<noscript>
-  <div class="noscript">This site works without JavaScript, but enabling it adds small UX improvements (active section highlighting &amp; scroll progress).</div>
-</noscript>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar"></div></div>
 
-<header>
-  <div class="header-content reveal">
-    <nav class="top-nav" aria-label="Primary">
-      <div class="nav-left">Arnold Abraham</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+<!-- ============ Navigation ============ -->
+<header class="site-header" id="top">
+  <nav class="nav container" aria-label="Primary">
+    <a href="#top" class="brand" aria-label="Arnold Abraham, back to top">
+      <span class="brand-mark">AA</span>
+      <span class="brand-name">Arnold Abraham</span>
+    </a>
 
-    <img src="assets/img/profile.jpg" alt="Arnold Abraham" class="profile-pic" width="110" height="110"/>
-    <h1>Arnold Abraham</h1>
-    <p>Software Engineer · Backend · Data Science</p>
-    <p class="location-line"><span class="location-icon" aria-hidden="true"></span><span>Erlangen, Germany</span></p>
-
-    <div class="hero-highlights" aria-label="Key highlights">
-      <span class="chip">Java · Spring</span>
-      <span class="chip">Python</span>
-      <span class="chip">PostgreSQL · Oracle</span>
-      <span class="chip">AWS · Docker</span>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/resume/Resume_Arnold_Abraham.pdf" class="nav-cv" download>Download CV</a>
     </div>
 
-    <div class="links" aria-label="External links">
-      <a href="https://github.com/arnold-abraham" target="_blank" rel="noreferrer noopener">GitHub</a>
-      <a href="https://linkedin.com/in/arnoldabraham" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-      <a href="assets/resume/Resume_Arnold_Abraham.pdf" download>Download CV</a>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark / light theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
     </div>
-  </div>
+  </nav>
 </header>
 
 <main id="main">
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <p>
-      Software Engineer with experience in backend systems, data-driven applications, and machine learning.
-      Focused on building scalable, reliable enterprise software with an emphasis on performance, maintainability, and real-world impact.
-    </p>
-  </section>
 
-  <section id="experience" class="reveal">
-    <h2>Experience</h2>
+  <!-- ============ Hero ============ -->
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-glow" aria-hidden="true"></div>
 
-    <div class="card experience-card reveal">
-      <img src="assets/img/siemens.png" alt="Siemens Logo" class="company-logo" width="52" height="52" loading="lazy"/>
-      <div>
-        <h3>Siemens Logistics</h3>
-        <div class="meta-row">
-          <span class="role">Software Engineer</span>
-          <span class="dates">Jul 2023 – Jun 2025</span>
-          <span class="location">Nuremberg, Germany</span>
-        </div>
-        <ul>
-          <li>Led the end-to-end migration of two Java applications from Oracle to PostgreSQL, ensuring database compatibility, data integrity, and application stability while reducing database licensing costs.</li>
-          <li>Built a Python-based predictive maintenance pipeline integrating thermal sensor data and machine learning models, enabling early fault detection and reducing periodic manual inspections by 90%.</li>
-          <li>Developed backend features and optimized database interfaces to enhance performance and maintainability.</li>
-          <li>Designed and implemented automated installation workflows for JRE, PostgreSQL, and environment configuration, reducing setup effort by 70%.</li>
-          <li>Implemented an asyncio-based Python data acquisition system for concurrent real-time monitoring of industrial drives.</li>
-          <li>Collaborated with cross-functional engineering teams to integrate predictive monitoring into production workflows.</li>
-        </ul>
+    <div class="hero-text">
+      <p class="status-pill"><span class="pulse" aria-hidden="true"></span>Open to opportunities · Willing to relocate</p>
+      <h1 id="hero-title">Hi, I'm <span class="grad">Arnold Abraham</span></h1>
+      <p class="hero-role">
+        <span class="mono">&gt;</span>
+        <span class="typed" data-words="Software Engineer|Backend · Java &amp; Spring Boot|Data &amp; AI · Python|Cloud · AWS &amp; Kubernetes">Software Engineer</span><span class="caret" aria-hidden="true"></span>
+      </p>
+      <p class="hero-lead">
+        I build reliable backend systems and data-driven applications, from Spring Boot microservices
+        to ML pipelines that cut manual work in industrial settings.
+      </p>
+
+      <div class="hero-cta">
+        <a href="assets/resume/Resume_Arnold_Abraham.pdf" class="btn btn-primary" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Download CV
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
+
+      <ul class="socials" aria-label="Profiles">
+        <li><a href="https://github.com/arnold-abraham" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a></li>
+        <li><a href="https://linkedin.com/in/arnoldabraham" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+        </a></li>
+        <li><a href="mailto:arnold@arnoldabraham.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a></li>
+      </ul>
     </div>
 
-    <div class="card experience-card reveal">
-      <img src="assets/img/ibs.png" alt="IBS Software Logo" class="company-logo" width="52" height="52" loading="lazy"/>
-      <div>
-        <h3>IBS Software</h3>
-        <div class="meta-row">
-          <span class="role">Product Engineer</span>
-          <span class="dates">Sept 2021 – Sept 2022</span>
-          <span class="location">Kochi, India</span>
-        </div>
-        <ul>
-          <li>Developed Java/Spring-based backend components for an airline crew scheduling platform used by LATAM and Qantas.</li>
-          <li>Implemented and maintained complex scheduling and compliance business logic, including bug fixes and enhancements driven by production and QA feedback.</li>
-          <li>Created, maintained, and troubleshot SQL scripts supporting backend functionality and ensuring correct system behavior.</li>
-          <li>Contributed across the full software development lifecycle, including design, testing (JUnit), code reviews, and production issue resolution.</li>
-          <li>Collaborated with PM, QA, and UI teams to deliver high-quality releases on schedule.</li>
-        </ul>
+    <div class="hero-photo">
+      <div class="photo-ring">
+        <img src="assets/img/profile.jpg" alt="Portrait of Arnold Abraham" width="320" height="320" fetchpriority="high" />
       </div>
     </div>
   </section>
 
-  <section id="education" class="reveal">
-    <h2>Education</h2>
+  <!-- ============ Stats ============ -->
+  <section class="container stats reveal" aria-label="Highlights">
+    <div class="stat"><span class="stat-num" data-count="3" data-suffix="+">3+</span><span class="stat-label">Years of engineering experience</span></div>
+    <div class="stat"><span class="stat-num" data-count="90" data-suffix="%">90%</span><span class="stat-label">Fewer manual inspections via predictive maintenance</span></div>
+    <div class="stat"><span class="stat-num" data-count="70" data-suffix="%">70%</span><span class="stat-label">Less setup effort with automated installs</span></div>
+    <div class="stat"><span class="stat-num">MSc</span><span class="stat-label">Data Science, FAU Erlangen–Nürnberg</span></div>
+  </section>
 
-    <div class="card experience-card reveal">
-      <img src="assets/img/fau.png" alt="FAU Logo" class="company-logo" width="52" height="52" loading="lazy"/>
-      <div>
-        <h3>FAU Erlangen–Nuremberg</h3>
-        <p><strong>Degree:</strong> Master of Science in Data Science · 2022 – 2025 · Erlangen, Germany</p>
-        <p>Specialization: Machine Learning &amp; Artificial Intelligence</p>
+  <!-- ============ About ============ -->
+  <section id="about" class="section container reveal">
+    <div class="section-head">
+      <span class="eyebrow">01 · About</span>
+      <h2>About me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Software Engineer focused on <strong>backend development</strong> and <strong>data &amp; AI</strong>.
+          At Siemens Logistics I worked on Java/Spring Boot microservices, database migrations, and a Python
+          predictive-maintenance pipeline that brought periodic manual inspections down by 90%.
+        </p>
+        <p>
+          Before that I built backend components for an enterprise airline crew-scheduling platform used by
+          LATAM Airlines and Qantas. I finished my MSc in Data Science (AI &amp; ML) at FAU Erlangen–Nürnberg and
+          have since been building cloud-native microservices on AWS EKS and LLM applications with LangChain and LangGraph.
+        </p>
+      </div>
+      <ul class="about-facts">
+        <li><span>Focus</span><strong>Backend · Data &amp; AI</strong></li>
+        <li><span>Based in</span><strong>Erlangen, Germany</strong></li>
+        <li><span>Languages</span><strong>English C1 · German A2 · Malayalam (native)</strong></li>
+        <li><span>Status</span><strong>Open to roles, willing to relocate</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ Experience ============ -->
+  <section id="experience" class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 · Experience</span>
+      <h2>Where I've worked</h2>
+    </div>
+
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <article class="card job">
+          <header class="job-head">
+            <div class="logo logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+            </div>
+            <div class="job-title">
+              <h3>Independent Projects &amp; Upskilling</h3>
+              <p class="job-company">Self-directed · Remote</p>
+            </div>
+            <span class="job-dates">Oct 2025 – Present</span>
+          </header>
+          <ul class="job-points">
+            <li>Built Spring Boot microservices with Kafka, PostgreSQL and JWT auth, deployed on AWS EKS with Terraform.</li>
+            <li>Built a RAG assistant (LangChain, FAISS, OpenAI) and a LangGraph shopping agent (GPT-4o).</li>
+            <li>Completed the Udemy AWS Cloud Practitioner course.</li>
+          </ul>
+          <ul class="tags" aria-label="Technologies">
+            <li>Spring Boot</li><li>Kafka</li><li>AWS EKS</li><li>Terraform</li><li>LangChain</li><li>LangGraph</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <article class="card job">
+          <header class="job-head">
+            <img src="assets/img/siemens.png" alt="Siemens Logistics logo" class="logo" width="48" height="48" loading="lazy" />
+            <div class="job-title">
+              <h3>Software Engineer – Working Student</h3>
+              <p class="job-company">Siemens Logistics (Vanderlande) · Nuremberg, Germany</p>
+            </div>
+            <span class="job-dates">Jul 2023 – Jun 2025</span>
+          </header>
+          <ul class="job-points">
+            <li>Built a Python-based <strong>predictive maintenance pipeline</strong> integrating thermal sensor data and ML models, enabling early fault detection and <strong>reducing periodic manual inspections by 90%</strong>.</li>
+            <li>Led the <strong>migration of two Java desktop applications from Oracle to PostgreSQL</strong>, introducing HikariCP connection pooling to improve performance and stability while reducing database licensing costs and ensuring data integrity.</li>
+            <li>Developed and enhanced backend <strong>Java/Spring Boot microservices and REST APIs</strong>, implementing new features and business logic with a focus on well-architected, testable and documented code.</li>
+            <li>Designed and implemented automated installation workflows for JRE, PostgreSQL, and environment configuration, <strong>reducing setup effort by 70%</strong>.</li>
+            <li>Implemented an <strong>asyncio-based Python system</strong> for concurrent real-time monitoring of industrial drives.</li>
+            <li>Built and maintained <strong>CI/CD pipelines in GitLab CI</strong>; managed containerised deployments using Docker and AWS.</li>
+          </ul>
+          <ul class="tags" aria-label="Technologies">
+            <li>Java</li><li>Spring Boot</li><li>Python</li><li>PostgreSQL</li><li>Oracle</li><li>HikariCP</li><li>GitLab CI</li><li>Docker</li><li>AWS</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <article class="card job">
+          <header class="job-head">
+            <img src="assets/img/ibs.png" alt="IBS Software logo" class="logo" width="48" height="48" loading="lazy" />
+            <div class="job-title">
+              <h3>Product Engineer</h3>
+              <p class="job-company">IBS Software · Kochi, India</p>
+            </div>
+            <span class="job-dates">Sept 2021 – Sept 2022</span>
+          </header>
+          <ul class="job-points">
+            <li>Developed Java/Spring-based backend components and RESTful APIs for an enterprise <strong>airline crew scheduling platform</strong> used by LATAM Airlines and Qantas, supporting thousands of daily scheduling decisions.</li>
+            <li>Designed and implemented complex scheduling and compliance rules, addressing production issues and delivering enhancements based on QA and operational feedback.</li>
+            <li>Created and troubleshot SQL scripts (PostgreSQL, Oracle) supporting backend functionality and data integrity.</li>
+            <li>Worked across the full SDLC in an agile environment, including unit and integration testing using JUnit and Mockito, peer code reviews, and production support.</li>
+          </ul>
+          <ul class="tags" aria-label="Technologies">
+            <li>Java</li><li>Spring</li><li>REST APIs</li><li>SQL</li><li>JUnit</li><li>Mockito</li><li>Agile</li>
+          </ul>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ Skills ============ -->
+  <section id="skills" class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 · Skills</span>
+      <h2>Technical skills</h2>
+    </div>
+
+    <div class="skill-filters reveal" role="toolbar" aria-label="Filter skills by category">
+      <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter" data-filter="lang" aria-pressed="false">Languages</button>
+      <button type="button" class="filter" data-filter="backend" aria-pressed="false">Backend &amp; APIs</button>
+      <button type="button" class="filter" data-filter="ai" aria-pressed="false">AI &amp; ML</button>
+      <button type="button" class="filter" data-filter="cloud" aria-pressed="false">Cloud &amp; DevOps</button>
+      <button type="button" class="filter" data-filter="db" aria-pressed="false">Databases</button>
+      <button type="button" class="filter" data-filter="test" aria-pressed="false">Testing</button>
+    </div>
+
+    <div class="skill-grid">
+      <div class="card skill-card reveal" data-cat="lang">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">&lt;/&gt;</span><h3>Languages</h3></div>
+        <ul class="chips"><li>Java</li><li>Python</li><li>SQL</li></ul>
+      </div>
+      <div class="card skill-card reveal" data-cat="backend">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">⚙</span><h3>Backend &amp; APIs</h3></div>
+        <ul class="chips"><li>Spring Boot</li><li>Spring Framework</li><li>FastAPI</li><li>Hibernate (JPA)</li><li>RESTful APIs</li><li>Microservices</li></ul>
+      </div>
+      <div class="card skill-card reveal" data-cat="ai">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">✦</span><h3>AI &amp; ML</h3></div>
+        <ul class="chips"><li>TensorFlow</li><li>LangChain</li><li>RAG</li><li>OpenAI API</li><li>Prompt Engineering</li></ul>
+      </div>
+      <div class="card skill-card reveal" data-cat="cloud">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">☁</span><h3>Cloud &amp; DevOps</h3></div>
+        <ul class="chips"><li>AWS</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>GitLab CI</li><li>CI/CD Pipelines</li><li>Maven</li><li>Git</li></ul>
+      </div>
+      <div class="card skill-card reveal" data-cat="db">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">⛁</span><h3>Databases</h3></div>
+        <ul class="chips"><li>PostgreSQL</li><li>Oracle</li><li>InfluxDB</li></ul>
+      </div>
+      <div class="card skill-card reveal" data-cat="test">
+        <div class="skill-card-head"><span class="skill-ico" aria-hidden="true">✓</span><h3>Testing</h3></div>
+        <ul class="chips"><li>JUnit</li><li>Mockito</li><li>pytest</li><li>TDD</li><li>Integration Testing</li></ul>
       </div>
     </div>
 
-    <div class="card experience-card reveal">
-      <img src="assets/img/ktu.png" alt="KTU Logo" class="company-logo" width="52" height="52" loading="lazy"/>
-      <div>
-        <h3>APJ Abdul Kalam Technological University</h3>
-        <p><strong>Degree:</strong> Bachelor of Technology in Computer Science &amp; Engineering · 2017 – 2021 · Kochi, India</p>
-        <p><strong>Relevant Courses:</strong> Data Structures, Algorithm Design</p>
+    <div class="spoken reveal">
+      <span class="spoken-label">Spoken languages</span>
+      <div class="spoken-list">
+        <div class="lang-meter"><span>English</span><span class="meter" style="--v:85%"><i></i></span><em>C1 · Fluent</em></div>
+        <div class="lang-meter"><span>German</span><span class="meter" style="--v:30%"><i></i></span><em>A2 · Basic</em></div>
+        <div class="lang-meter"><span>Malayalam</span><span class="meter" style="--v:100%"><i></i></span><em>Native</em></div>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="reveal">
-    <h2>Technical Skills</h2>
-
-    <div class="skills-section">
-      <div class="skills-columns">
-        <div class="skills-column reveal">
-          <div class="skill-row">
-            <span class="skill-ico" aria-hidden="true">&lt;/&gt;</span>
-            <span class="skill-label">Languages</span>
-            <span class="skill-list">Java, Python, SQL, JavaScript</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-ico" aria-hidden="true">⚙</span>
-            <span class="skill-label">Frameworks</span>
-            <span class="skill-list">Spring Boot, Spring, Hibernate (JPA), React, FastAPI</span>
-          </div>
-        </div>
-
-        <div class="skills-column reveal">
-          <div class="skill-row">
-            <span class="skill-ico" aria-hidden="true">☁</span>
-            <span class="skill-label">Tools &amp; Platforms</span>
-            <span class="skill-list">Git, Docker, AWS, CI/CD, Swagger (OpenAPI), Postman, Jira</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-ico" aria-hidden="true">⛁</span>
-            <span class="skill-label">Databases</span>
-            <span class="skill-list">PostgreSQL, Oracle, InfluxDB</span>
-          </div>
-        </div>
-      </div>
+  <!-- ============ Projects ============ -->
+  <section id="projects" class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 · Projects</span>
+      <h2>Featured projects</h2>
+      <p class="section-sub">Pinned repositories from my GitHub, refreshed automatically each week.</p>
     </div>
-  </section>
-
-  <section id="projects" class="reveal">
-    <h2>Projects</h2>
-    <p class="section-subtitle">Projects from GitHub.</p>
 
     <div class="projects-grid" id="pinned-projects" aria-live="polite">
-      <div class="project-skeleton">Loading projects…</div>
+      <div class="card project-skeleton"></div>
+      <div class="card project-skeleton"></div>
     </div>
 
-    <p class="projects-footnote">
-      <a href="https://github.com/arnold-abraham" target="_blank" rel="noreferrer noopener">View all projects on GitHub</a>
+    <p class="center">
+      <a class="btn btn-ghost" href="https://github.com/arnold-abraham" target="_blank" rel="noreferrer noopener">View all on GitHub ↗</a>
     </p>
   </section>
 
-  <section id="contact" class="reveal">
-    <h2>Contact</h2>
-    <div class="contact-card">
-      <div class="contact-item reveal">
-        <span class="contact-icon contact-icon-email" aria-hidden="true"></span>
-        <a href="mailto:arnold@arnoldabraham.com">arnold@arnoldabraham.com</a>
+  <!-- ============ Education ============ -->
+  <section id="education" class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 · Education</span>
+      <h2>Education</h2>
+    </div>
+
+    <div class="edu-grid">
+      <article class="card edu reveal">
+        <img src="assets/img/fau.png" alt="FAU Erlangen–Nürnberg logo" class="logo" width="48" height="48" loading="lazy" />
+        <div>
+          <span class="job-dates">Oct 2022 – Sept 2025</span>
+          <h3>MSc Data Science</h3>
+          <p class="job-company">Friedrich-Alexander-Universität Erlangen–Nürnberg, Germany</p>
+          <p>Major in Artificial Intelligence and Machine Learning.</p>
+          <p class="thesis"><span>Thesis</span> <em>Predictive Maintenance for Electrical Panels: Hotspot Forecasting and Anomaly Detection</em> (with Siemens)</p>
+        </div>
+      </article>
+
+      <article class="card edu reveal">
+        <img src="assets/img/ktu.png" alt="APJ Abdul Kalam Technological University logo" class="logo" width="48" height="48" loading="lazy" />
+        <div>
+          <span class="job-dates">Aug 2017 – Jul 2021</span>
+          <h3>B.Tech Computer Science &amp; Engineering</h3>
+          <p class="job-company">APJ Abdul Kalam Technological University, India</p>
+          <p>Relevant coursework: data structures and algorithm design.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  <section id="contact" class="section container reveal">
+    <div class="card contact">
+      <div class="contact-text">
+        <span class="eyebrow">06 · Contact</span>
+        <h2>Let's work together</h2>
+        <p>I'm open to backend, data and AI engineering roles. The quickest way to reach me is email.</p>
       </div>
-      <div class="contact-item reveal">
-        <span class="contact-icon contact-icon-phone" aria-hidden="true"></span>
-        <a href="tel:+4915510451293">+49 155 10451293</a>
-      </div>
-      <div class="contact-item reveal">
-        <span class="contact-icon contact-icon-linkedin" aria-hidden="true"></span>
-        <a href="https://linkedin.com/in/arnoldabraham">linkedin.com/in/arnoldabraham</a>
+      <div class="contact-list">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <a href="mailto:arnold@arnoldabraham.com">arnold@arnoldabraham.com</a>
+          <button type="button" class="copy-btn" data-copy="arnold@arnoldabraham.com" aria-label="Copy email address">Copy</button>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <a href="tel:+4915510451293">+49 155 10451293</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+          <a href="https://linkedin.com/in/arnoldabraham" target="_blank" rel="noreferrer noopener">linkedin.com/in/arnoldabraham</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <span>Erlangen, Germany · willing to relocate</span>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <p>© Arnold Abraham</p>
+<footer class="footer container">
+  <p>© <span id="year">2026</span> Arnold Abraham</p>
+  <a href="#top" class="back-top-link">Back to top ↑</a>
 </footer>
+
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+</button>
+
+<div class="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/main.js" defer></script>
 </body>
