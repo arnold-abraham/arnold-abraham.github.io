@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-05T13:17:40Z",
+  "generatedAt": "2026-10-12T14:07:40Z",
   "username": "arnold-abraham",
   "projects": [
     {
       "name": "food-delivery-microservices",
-      "description": "Food delivery microservices using Java 17 + Spring Boot, Spring Cloud Gateway, PostgreSQL, Kafka, Docker Compose, Kubernetes, and AWS EKS provisioning with Terraform.",
+      "description": "Food delivery microservices using Java 17, Spring Boot, Spring Cloud Gateway, PostgreSQL, Kafka, Docker Compose, Kubernetes, and AWS EKS provisioning with Terraform.",
       "url": "https://github.com/arnold-abraham/food-delivery-microservices",
       "stars": 1,
       "forks": 0,
