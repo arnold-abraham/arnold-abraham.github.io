@@ -655,6 +655,60 @@ html:not(.js) .menu-toggle{ display: none; }
 @keyframes shimmer{ to{ background-position: -200% 0; } }
 .project-error{ padding: 22px; color: var(--muted); grid-column: 1 / -1; }
 
+/* Hand-written case studies with inline architecture diagrams */
+.case-studies{ display: grid; gap: 20px; margin-bottom: 48px; }
+.case{ display: grid; gap: 24px; padding: 22px; }
+@media (min-width: 768px){ .case{ padding: 28px; } }
+@media (min-width: 1000px){
+  .case{ grid-template-columns: minmax(0,1fr) minmax(0,1.45fr); gap: 32px; align-items: center; }
+}
+.case-body{ display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.case-body .tags{ margin-top: 4px; }
+.case-kicker{ font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; color: var(--brand); }
+.case h3{ font-size: 1.35rem; font-weight: 800; letter-spacing: -.01em; }
+.case-problem{ color: var(--text); }
+.case-problem span{
+  display: inline-block; margin-right: 6px; padding: 1px 8px; border-radius: 6px;
+  font-size: 12px; font-weight: 600; vertical-align: 1px;
+  color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+.case-points{ display: grid; gap: 8px; color: var(--muted); font-size: 14.5px; }
+.case-points li{ position: relative; padding-left: 18px; }
+.case-points li::before{
+  content: ""; position: absolute; left: 2px; top: .65em; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--grad);
+}
+.case-link{ align-self: flex-start; font-weight: 600; font-size: 14.5px; color: var(--brand); text-decoration: none; }
+.case-link:hover{ text-decoration: underline; }
+
+.case-diagram{ margin: 0; min-width: 0; }
+.diagram-scroll{
+  overflow-x: auto; padding: 14px; border-radius: var(--radius-sm);
+  background: var(--bg-2); border: 1px solid var(--border);
+}
+.diagram-scroll svg{ display: block; width: 100%; min-width: 540px; height: auto; stroke: none; }
+.case-diagram figcaption{ margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+.dg-node rect{ fill: var(--surface-2); stroke: var(--border-strong); stroke-width: 1.2; }
+.dg-node.dg-key rect{ stroke: var(--brand); fill: color-mix(in srgb, var(--brand) 10%, var(--bg-2)); }
+.dg-node.dg-data rect{ stroke: var(--brand-2); fill: color-mix(in srgb, var(--brand-2) 10%, var(--bg-2)); }
+.dg-node.dg-svc rect{ stroke: color-mix(in srgb, var(--accent) 70%, transparent); fill: color-mix(in srgb, var(--accent) 9%, var(--bg-2)); }
+.dg-node text, .dg-group-label{
+  fill: var(--text); font-family: var(--font); font-size: 13px; font-weight: 600; text-anchor: middle;
+}
+.dg-node .dg-sub{ fill: var(--muted); font-size: 11px; font-weight: 500; }
+.dg-node.dg-svc text{ font-family: var(--mono); font-size: 11.5px; font-weight: 500; }
+.dg-group{ fill: none; stroke: var(--border-strong); stroke-dasharray: 5 5; }
+.dg-group-label{ font-size: 11.5px; fill: var(--muted); }
+.dg-edges path{ fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.dg-edges.dg-async path{ stroke-dasharray: 5 4; }
+.dg-head{ fill: var(--muted); }
+.dg-green{ fill: #22c55e; }
+.dg-yellow{ fill: #eab308; }
+.dg-red{ fill: #ef4444; }
+
+.subhead{ margin-bottom: 16px; font-size: 1.1rem; font-weight: 700; color: var(--muted); }
+
 /* ---------- Education ---------- */
 .edu-grid{ display: grid; gap: 16px; }
 @media (min-width: 860px){ .edu-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; } }

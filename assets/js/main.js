@@ -242,6 +242,8 @@
    * ------------------------------ */
   const MAX_PROJECTS = 4;
   const PROJECTS_JSON_URL = '/assets/data/projects.json';
+  // Shown as hand-written case studies in index.html
+  const FEATURED_REPOS = new Set(['panel-360', 'food-delivery-microservices']);
 
   function escapeHtml(str) {
     return String(str)
@@ -250,12 +252,6 @@
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#39;');
-  }
-
-  function formatCompactNumber(n) {
-    const num = Number(n) || 0;
-    if (num < 1000) return String(num);
-    return `${Math.round(num / 100) / 10}k`;
   }
 
   function prettyName(name) {
@@ -293,8 +289,6 @@
         <p class="project-desc">${desc}</p>
         <div class="project-meta">
           ${lang ? `<span><i class="dot" style="background:${languageColor(repo.language)}"></i>${lang}</span>` : ''}
-          <span aria-label="${Number(repo.stars) || 0} stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>${formatCompactNumber(repo.stars)}</span>
-          <span aria-label="${Number(repo.forks) || 0} forks"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7M12 12v5"/></svg>${formatCompactNumber(repo.forks)}</span>
         </div>
       </a>
     `;
@@ -319,7 +313,9 @@
       const res = await fetch(`${PROJECTS_JSON_URL}?v=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
       const data = await res.json();
-      const projects = (Array.isArray(data?.projects) ? data.projects : []).slice(0, MAX_PROJECTS);
+      const projects = (Array.isArray(data?.projects) ? data.projects : [])
+        .filter((p) => !FEATURED_REPOS.has(p.name))
+        .slice(0, MAX_PROJECTS);
       container.innerHTML = projects.length ? projects.map(renderProjectCard).join('') : fail;
       observeReveals(container);
       attachSpotlight(container);
